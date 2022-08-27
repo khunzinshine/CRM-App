@@ -1,14 +1,47 @@
+import React, { useContext } from "react";
 import Login from "./views/login/Login";
-import SideBar from "./components/sidebar/SideBar";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import CustomerList from "./views/customer-list/CustomerList";
+import { AuthContext } from "./context/authContext";
+import NewCustomer from "./views/new-customer/NewCustomer";
 import "./App.css";
-import Table from "./components/table/Table";
 
 function App() {
+  const ProtectedRoute = ({ children }) => {
+    const { user } = useContext(AuthContext);
+
+    if (!user) {
+      return <Navigate to="/login" />;
+    }
+
+    return children;
+  };
   return (
-    <>
-      {/* <Login /> */}
-      <SideBar />
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/">
+          <Route path="login" element={<Login />} />
+        </Route>
+        <Route path="/customer">
+          <Route
+            path="list"
+            element={
+              <ProtectedRoute>
+                <CustomerList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="new"
+            element={
+              <ProtectedRoute>
+                <NewCustomer />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
