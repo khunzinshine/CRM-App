@@ -1,9 +1,13 @@
+import axios from "axios";
 import React from "react";
-import CustomerList from "../../views/customer-list/CustomerList";
-import NewCustomer from "../../views/new-customer/NewCustomer";
-import Table from "../table/Table";
+import { Link } from "react-router-dom";
 import "./SideBar.css";
-const SideBar = () => {
+
+const SideBar = ({ children }) => {
+  const handleLogout = async () => {
+    await axios.post("/auth/logout");
+  };
+  console.log("sideBar renderedxxxx");
   return (
     <div className="s-layout">
       <div className="s-layout__sidebar">
@@ -14,32 +18,33 @@ const SideBar = () => {
         <nav className="s-sidebar__nav">
           <ul>
             <li>
-              <a className="s-sidebar__nav-link" href="#0">
+              <Link className="s-sidebar__nav-link" to="/customer/list">
                 <i className="fas fa-users"></i>
                 <em>Customers</em>
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="s-sidebar__nav-link" href="#0">
+              <Link className="s-sidebar__nav-link" to="/customer/new">
                 <i className="fas fa-plus-circle"></i>
                 <em>Add New Customer</em>
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="s-sidebar__nav-link" href="#0">
+              <Link
+                onClick={handleLogout}
+                className="s-sidebar__nav-link"
+                to="/auth/logout"
+              >
                 <i className="fas fa-user-circle"></i>
                 <em>Logout</em>
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
       </div>
-      <main className="s-layout__content">
-        {/* <NewCustomer /> */}
-        <CustomerList />
-      </main>
+      <main className="s-layout__content">{children}</main>
     </div>
   );
 };
 
-export default SideBar;
+export default React.memo(SideBar);
