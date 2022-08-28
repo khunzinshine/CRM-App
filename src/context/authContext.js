@@ -53,7 +53,6 @@ export const AuthContextProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    Navigate("/login");
   };
 
   const isExpired = () => {
@@ -69,8 +68,6 @@ export const AuthContextProvider = ({ children }) => {
     return false;
   };
 
-  // console.log("state.tokenxxxxx", state.token.token);
-
   return (
     <AuthContext.Provider
       value={{
@@ -79,6 +76,7 @@ export const AuthContextProvider = ({ children }) => {
         loading: state.loading,
         error: state.error,
         dispatch,
+        logout,
         isExpired,
       }}
     >

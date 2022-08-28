@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
-  const { loading, error, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const [credentials, setCredentials] = useState({
     username: undefined,
@@ -14,14 +14,13 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  console.log("credentials", credentials);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
-      console.log("resxxx", res);
+      const res = await axios.post(
+        process.env.REACT_APP_API_SERVER + "/auth/login",
+        credentials
+      );
       dispatch({
         type: "LOGIN_SUCCESS",
         payload: {
@@ -32,17 +31,9 @@ const Login = () => {
           },
         },
       });
-
       navigate("/customer/list");
-      // if (res.data.isAdmin) {
-      // } else {
-      //   dispatch({
-      //     type: "LOGIN_FAILURE",
-      //     payload: { message: "You are not allowed!" },
-      //   });
-      // }
     } catch (err) {
-      // dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
 
@@ -54,7 +45,7 @@ const Login = () => {
     <div className="container">
       <div className="wrapper">
         <div className="title">
-          <span>Sign in</span>
+          <h4>Sign in</h4>
         </div>
         <form>
           <div className="row">
