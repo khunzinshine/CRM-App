@@ -3,6 +3,9 @@
 }
 
 input[type="text"],
+input[type="date"],
+input[type="password"],
+input[type="file"],
 select,
 textarea {
   width: 100%;
@@ -10,6 +13,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
+  background: none;
 }
 
 label {
@@ -38,8 +42,8 @@ input[type="submit"]:hover {
   height: 100%;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 4px 4px 8px 0 rgba(142, 140, 140, 0.2);
-  overflow: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .col-25 {
@@ -52,6 +56,10 @@ input[type="submit"]:hover {
   float: left;
   width: 75%;
   margin-top: 20px;
+}
+
+span {
+  color: gray;
 }
 
 /* Clear floats after the columns */
