@@ -19,23 +19,25 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/customer">
-          <Route
-            path="list"
-            element={
-              <ProtectedRoute>
-                <CustomerList />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="new"
-            element={
-              <ProtectedRoute>
-                <NewCustomer />
-              </ProtectedRoute>
-            }
-          />
+        <Route path="/">
+          <Route path="customer">
+            <Route
+              path="list"
+              element={
+                <ProtectedRoute>
+                  <CustomerList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="new"
+              element={
+                <ProtectedRoute>
+                  <NewCustomer />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
