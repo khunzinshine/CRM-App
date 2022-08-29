@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
-import axios from "axios";
 import "./NewCustomer.css";
 
 const NewCustomer = () => {
