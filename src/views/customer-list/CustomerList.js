@@ -47,6 +47,7 @@ const CustomerList = () => {
         },
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemsPerPage, currentPage, search]);
 
   const handleChange = (e) => {

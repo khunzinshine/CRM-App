@@ -7,6 +7,7 @@
 }
 body {
   overflow: auto;
+  background-color: #7b36d6;
 }
 ::selection {
   background: rgba(26, 188, 156, 0.3);

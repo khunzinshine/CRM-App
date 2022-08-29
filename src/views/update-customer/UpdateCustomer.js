@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import "./UpdateCustomer.css";
 
 const UpdateCustomer = ({ handleOpen, handleClose, customer }) => {
-  const [info, setInfo] = useState(customer && customer);
+  // const [info, setInfo] = useState(customer && customer);
 
-  const handleChange = (e) => {
-    setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
+  // const handleChange = (e) => {
+  //   setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const UpdateCustomer = ({ handleOpen, handleClose, customer }) => {
                 type="text"
                 id="email"
                 value={customer?.email}
-                onChange={handleChange}
+                // onChange={handleChange}
                 required
               />
 
@@ -43,7 +43,7 @@ const UpdateCustomer = ({ handleOpen, handleClose, customer }) => {
               <input
                 type="text"
                 id="username"
-                onChange={handleChange}
+                // onChange={handleChange}
                 value={customer?.username}
                 required
                 pattern="[A-Za-z]{3}"
@@ -54,7 +54,7 @@ const UpdateCustomer = ({ handleOpen, handleClose, customer }) => {
               <input
                 type="text"
                 id="phone"
-                onChange={handleChange}
+                // onChange={handleChange}
                 value={customer?.phone}
                 required
               />
@@ -63,7 +63,7 @@ const UpdateCustomer = ({ handleOpen, handleClose, customer }) => {
               <input
                 type="date"
                 id="birthday"
-                onChange={handleChange}
+                // onChange={handleChange}
                 value={customer?.birthday}
                 required
               />
