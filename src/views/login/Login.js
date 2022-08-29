@@ -27,12 +27,13 @@ const Login = () => {
           user: res.data.details,
           token: {
             token: res.data.token,
-            expiredAt: new Date(Date.now() + 60 * 1000),
+            expiredAt: new Date(Date.now() + 4 * 60 * 60 * 1000),
           },
         },
       });
       navigate("/customer/list");
     } catch (err) {
+      alert("Login Failed!");
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };

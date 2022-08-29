@@ -11,33 +11,33 @@ function App() {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/" />;
     }
     return children;
   };
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login />} />
         <Route path="/">
-          <Route path="login" element={<Login />} />
-        </Route>
-        <Route path="/customer">
-          <Route
-            path="list"
-            element={
-              <ProtectedRoute>
-                <CustomerList />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="new"
-            element={
-              <ProtectedRoute>
-                <NewCustomer />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="customer">
+            <Route
+              path="list"
+              element={
+                <ProtectedRoute>
+                  <CustomerList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="new"
+              element={
+                <ProtectedRoute>
+                  <NewCustomer />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -1,5 +1,4 @@
 import { createContext, useEffect, useReducer } from "react";
-import { Navigate } from "react-router-dom";
 
 const INITIAL_STATE = {
   user: JSON.parse(localStorage.getItem("user")) || null,

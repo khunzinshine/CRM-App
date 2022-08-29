@@ -1,6 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
-import axios from "axios";
 import "./NewCustomer.css";
 
 const NewCustomer = () => {
@@ -55,7 +55,7 @@ const NewCustomer = () => {
       };
 
       await axios
-        .post("/auth/register", newUser)
+        .post(process.env.REACT_APP_API_SERVER + "/auth/register", newUser)
         .then(() => alert("Customer has been created sucessfully!"));
     } catch (err) {
       console.log(err);

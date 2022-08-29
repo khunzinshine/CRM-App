@@ -47,6 +47,24 @@ export const deleteCustomer = createAsyncThunk(
   }
 );
 
+export const updateCustomer = createAsyncThunk(
+  "updateCustomer",
+  async (
+    { url, id, body },
+    { fulfillWithValue, rejectWithValue, dispatch }
+  ) => {
+    try {
+      dispatch(loadingAction(true));
+      const response = await axios.put(url + "/" + id, body);
+      dispatch(loadingAction(false));
+      return fulfillWithValue(response);
+    } catch (err) {
+      dispatch(loadingAction(false));
+      return rejectWithValue(err);
+    }
+  }
+);
+
 export const getDetailCustomer = createAsyncThunk(
   "getDetailCustomer",
   async ({ url, body }, { fulfillWithValue, rejectWithValue, dispatch }) => {

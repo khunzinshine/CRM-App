@@ -4,6 +4,7 @@ import {
   createNewCustomer,
   deleteCustomer,
   getDetailCustomer,
+  updateCustomer,
 } from "./CustomerAPI";
 
 const initialState = {
@@ -39,6 +40,12 @@ const Slice = createSlice({
       state.detail = action.payload;
     });
     builder.addCase(getDetailCustomer.rejected, (state, action) => {
+      state.message = action.payload;
+    });
+    builder.addCase(updateCustomer.fulfilled, (state, action) => {
+      state.message = action.payload;
+    });
+    builder.addCase(updateCustomer.rejected, (state, action) => {
       state.message = action.payload;
     });
   },

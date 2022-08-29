@@ -16,11 +16,10 @@ import "./CustomerList.css";
 const CustomerList = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { data } = useSelector((state) => state.customer).data;
   const {
+    data: { data },
     detail: { data: detailData },
   } = useSelector((state) => state.customer);
-
   const [date, setDate] = useState({});
 
   const urlParams = new URLSearchParams(navigate.location);
@@ -47,6 +46,7 @@ const CustomerList = () => {
         },
       })
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemsPerPage, currentPage, search]);
 
   const handleChange = (e) => {
