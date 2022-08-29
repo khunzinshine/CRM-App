@@ -27,7 +27,7 @@ const Login = () => {
           user: res.data.details,
           token: {
             token: res.data.token,
-            expiredAt: new Date(Date.now() + 60 * 1000),
+            expiredAt: new Date(Date.now() + 4 * 60 * 60 * 1000),
           },
         },
       });
