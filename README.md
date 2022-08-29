@@ -4,11 +4,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-First you have to clone this repo:
-git clone https://github.com/khunzinshine/CRM-App.git
+First you have to clone the repo:
+
+### git clone https://github.com/khunzinshine/CRM-App.git
 
 Then install packages:
-npm install or yarn
+
+### npm install or yarn
 
 In the project directory, you can run:
 
