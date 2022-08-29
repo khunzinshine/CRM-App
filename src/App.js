@@ -11,16 +11,14 @@ function App() {
     const { user } = useContext(AuthContext);
 
     if (!user) {
-      return <Navigate to="/login" />;
+      return <Navigate to="/" />;
     }
     return children;
   };
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route path="login" element={<Login />} />
-        </Route>
+        <Route path="/" element={<Login />} />
         <Route path="/customer">
           <Route
             path="list"

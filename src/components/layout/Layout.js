@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
               <Link
                 onClick={handleLogout}
                 className="s-sidebar__nav-link"
-                to="/login"
+                to="/"
               >
                 <i className="fas fa-user-circle"></i>
                 <em>Logout</em>

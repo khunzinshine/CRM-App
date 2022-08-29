@@ -33,6 +33,7 @@ const Login = () => {
       });
       navigate("/customer/list");
     } catch (err) {
+      alert("Login Failed!");
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
