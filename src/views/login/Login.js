@@ -75,7 +75,7 @@ const Login = () => {
           <div className='row button'>
             <input
               type='submit'
-              value={loading ? 'logging in...' : 'Login'}
+              value={loading ? 'Logging in...' : 'Login'}
               onClick={handleSubmit}
               disabled={!!loading}
             ></input>
