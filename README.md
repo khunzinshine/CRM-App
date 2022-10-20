@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Live Demo : ### https://khun-crm-app.netlify.app/
+## Live Demo : https://khun-crm-app.netlify.app/
 
 ## Credentials
 
@@ -18,7 +18,11 @@ First you have to clone the repo:
 
 Then install packages:
 
-### `npm install` or `yarn`
+### `npm install`
+
+or
+
+### `yarn`
 
 In the project directory, you can run:
 
