@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "../../context/authContext";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../context/authContext';
+import { useNavigate } from 'react-router-dom';
+import './Login.css';
 
 const Login = () => {
-  const { dispatch } = useContext(AuthContext);
+  const { dispatch, loading } = useContext(AuthContext);
 
   const [credentials, setCredentials] = useState({
     username: undefined,
@@ -16,13 +16,14 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({ type: 'LOGIN_START' });
     try {
       const res = await axios.post(
-        process.env.REACT_APP_API_SERVER + "/auth/login",
+        process.env.REACT_APP_API_SERVER + '/auth/login',
         credentials
       );
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: 'LOGIN_SUCCESS',
         payload: {
           user: res.data.details,
           token: {
@@ -31,10 +32,10 @@ const Login = () => {
           },
         },
       });
-      navigate("/customer/list");
+      navigate('/customer/list');
     } catch (err) {
-      alert("Login Failed!");
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      alert('Login Failed!');
+      dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
     }
   };
 
@@ -43,36 +44,41 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div className="wrapper">
-        <div className="title">
+    <div className='container'>
+      <div className='wrapper'>
+        <div className='title'>
           <h4>Sign in</h4>
         </div>
         <form>
-          <div className="row">
-            <i className="fas fa-envelope"></i>
+          <div className='row'>
+            <i className='fas fa-envelope'></i>
             <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Email address"
+              type='text'
+              name='username'
+              id='username'
+              placeholder='Email address'
               required
               onChange={handleChange}
             ></input>
           </div>
-          <div className="row">
-            <i className="fas fa-lock"></i>
+          <div className='row'>
+            <i className='fas fa-lock'></i>
             <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Password"
+              type='password'
+              name='password'
+              id='password'
+              placeholder='Password'
               required
               onChange={handleChange}
             ></input>
           </div>
-          <div className="row button">
-            <input type="submit" value="Login" onClick={handleSubmit}></input>
+          <div className='row button'>
+            <input
+              type='submit'
+              value={loading ? 'Logging in...' : 'Login'}
+              onClick={handleSubmit}
+              disabled={!!loading}
+            ></input>
           </div>
         </form>
       </div>
