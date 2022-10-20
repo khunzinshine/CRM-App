@@ -18,7 +18,7 @@ First you have to clone the repo:
 
 Then install packages:
 
-### npm install or yarn
+### `npm install` or `yarn`
 
 In the project directory, you can run:
 
